@@ -35,7 +35,16 @@ Para 'refactorizar' este código, y hacer que explote la capacidad multi-núcleo
 
 1. Cree una clase de tipo Thread que represente el ciclo de vida de un hilo que haga la búsqueda de un segmento del conjunto de servidores disponibles.
 
+Se crea la clase:
+
+![image](https://user-images.githubusercontent.com/69698380/222434522-db5defc8-23f1-4240-8e06-c52863b91918.png)
+
+
 2. Agregue al método 'checkHost' un parámetro entero N, correspondiente al número de hilos entre los que se va a realizar la búsqueda (recuerde tener en cuenta si N es par o impar!). Modifique el código de este método para que divida el espacio de búsqueda entre las N partes indicadas, y paralelice la búsqueda a través de N hilos.
+
+Se crea el método checkHost al que se le agrega el parámetro de la cantidad de hilos por la que se va a subdividir el proceso:
+
+![image](https://user-images.githubusercontent.com/69698380/222434664-8f3c934c-78eb-4694-8d30-e2c50990fbfe.png)
 
 3. Haga que entre TODOS los hilos lleven la cuenta de las ocurrencias de la IP que se han detectado en TOTAL y una vez se cumpla el número objetivo (_BLACK_LIST_ALARM_COUNT_), deben finalizar el procesamiento TODOS los hilos, luego debe reportar el host como confiable o no confiable. Tenga también en cuenta:  
 
@@ -43,7 +52,16 @@ Para 'refactorizar' este código, y hacer que explote la capacidad multi-núcleo
 	
 	* Se sabe que el HOST 202.24.34.55 está reportado en listas negras de una forma más dispersa, y que el host 212.24.24.55 NO está en ninguna lista negra.
 
+Como vemos en esta parte del código es donde usamos el _BLACK_LIST_ALARM_COUNT_ dentro de nuestro nuevo método y que hará finalizar todos nuestros hilos.
+
+![image](https://user-images.githubusercontent.com/69698380/222435096-b5265bc6-1a0d-4d99-a3e7-3a9b994699f9.png)
+
 
 **Bono**
 
 Haga que también imprima el número TOTAL de registros revisados en las listas de todos los hilos, es decir, imprimir el número de listas negras revisadas VS. el número de listas negras total(80,000). Se debe garantizar que dicha información sea verídica bajo el nuevo esquema de procesamiento en paralelo planteado.
+
+Se cumple con los requisitos necesarios.
+
+![image](https://user-images.githubusercontent.com/69698380/222435675-b0718858-6988-4755-a2cd-f3232e3b3726.png)
+
